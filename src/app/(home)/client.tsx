@@ -1,6 +1,5 @@
 "use client";
 
-import { getName } from "@/app/actions/cookies";
 import { Chat } from "@/components/Chat";
 import { Landing } from "@/components/Landing";
 
