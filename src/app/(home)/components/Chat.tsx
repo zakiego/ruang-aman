@@ -37,7 +37,7 @@ export function Chat() {
 
   return (
     <Card className="shadow-xl rounded-none sm:rounded-xl w-[100%] sm:w-[85%] md:w-[70%] lg:w-[50%] h-screen sm:h-[95vh]">
-      <CardContent className="h-[90vh] p-4 sm:h-[85vh]">
+      <CardContent className="h-[85vh] p-4 sm:h-[85vh]">
         <ScrollArea className="pr-4 h-full">
           {messages.map((m) => (
             <div
@@ -66,13 +66,13 @@ export function Chat() {
           )}
         </ScrollArea>
       </CardContent>
-      <CardFooter className="border-t p-4 h-[10vh] sm:h-[10vh] rounded-xl bg-[#fcfbfa] shadow-xl">
+      <CardFooter className="border-t p-4 h-[15vh] sm:h-[10vh] sm:rounded-xl bg-[#fcfbfa] shadow-xl ">
         <form onSubmit={handleFormSubmit} className="flex w-full space-x-2">
           <Input
             value={input}
             onChange={handleInputChange}
-            placeholder="Lagi mikirin apa?"
-            className="flex-grow"
+            placeholder="Ceritain aja"
+            className="flex-grow placeholder:text-gray-300 focus-visible:ring-0"
           />
           <Button
             type="submit"
