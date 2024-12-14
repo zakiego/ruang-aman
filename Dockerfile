@@ -13,7 +13,7 @@ RUN pnpm fetch --prod
 COPY . /app
 RUN pnpm run build
 
-FROM base
+FROM base AS prod
 
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
