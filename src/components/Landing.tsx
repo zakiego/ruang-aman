@@ -1,20 +1,13 @@
 "use client";
 
+import { setName } from "@/app/actions/cookies";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export function Landing({
-  name,
-  setName,
-}: {
-  name: string;
-  setName: (name: string) => void;
-}) {
+export function Landing() {
   const [tempName, setTempName] = useState("");
-  const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

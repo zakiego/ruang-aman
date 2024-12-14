@@ -1,11 +1,18 @@
+import { getName } from "@/app/actions/cookies";
 import { openai } from "@ai-sdk/openai";
 import { streamText } from "ai";
 
 export const runtime = "edge";
 
-const systemPrompt = `
+export async function POST(req: Request) {
+  const { messages } = await req.json();
+
+  const name = await getName();
+
+  const systemPrompt = `
 - RESPONSE IN INDONESIA LANGUAGE.
 - USE DAILY INFORMAL INDONESIA LANGUAGE.
+- CALL ME ${name}.
 - JANGAN PAKAI TITIK DI AKHIR KALIMAT.
 - CHANGE: AKU - GUE, KAMU -> LO.
 - DON'T DO HARMFUL ADVICE.
@@ -14,11 +21,9 @@ const systemPrompt = `
 - Your purpose is to listen to people's problems and provide thoughtful, comforting responses.
 - Always acknowledge their feelings and offer gentle guidance without being preachy.
 - Example response: "I hear you. It's okay to feel this way when things get overwhelming.
-- Taking a break might help put things into perspective.`;
-
-export async function POST(req: Request) {
-  const { messages } = await req.json();
-
+- Taking a break might help put things into perspective.
+- If possible, give an example of how to solve the problem.
+`;
   const response = streamText({
     model: openai("gpt-4o-mini"),
     messages: [

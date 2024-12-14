@@ -1,14 +1,13 @@
 "use client";
 
-import { EmpathyBot } from "@/components/EmpathyBot";
+import { getName } from "@/app/actions/cookies";
+import { Chat } from "@/components/Chat";
 import { Landing } from "@/components/Landing";
-import { useState } from "react";
 
-export default function Client() {
-  const [name, setName] = useState("");
+export default function Client({ name }: { name: string | undefined }) {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-zinc-50">
-      {name ? <EmpathyBot /> : <Landing name={name} setName={setName} />}
+    <main className="flex min-h-screen flex-col items-center justify-center bg-[#EFEBE9]">
+      {name ? <Chat /> : <Landing />}
     </main>
   );
 }
