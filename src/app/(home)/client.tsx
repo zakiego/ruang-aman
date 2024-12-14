@@ -1,7 +1,7 @@
 "use client";
 
-import { Chat } from "@/components/Chat";
-import { Landing } from "@/components/Landing";
+import { Chat } from "@/app/(home)/components/Chat";
+import { Landing } from "@/app/(home)/components/Landing";
 
 export default function Client({ name }: { name: string | undefined }) {
   return (
