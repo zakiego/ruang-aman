@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@ai-sdk/openai": "^1.0.8",
-    "@nanostores/react": "github:ai/react",
     "@radix-ui/react-scroll-area": "^1.2.2",
     "@radix-ui/react-slot": "^1.1.1",
     "@vercel/analytics": "^1.4.1",
@@ -19,7 +18,6 @@
     "clsx": "^2.1.1",
     "lucide-react": "^0.468.0",
     "next": "15.1.0",
-    "openai-edge": "^1.2.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^2.5.5",
