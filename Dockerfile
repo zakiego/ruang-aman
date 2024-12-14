@@ -4,7 +4,7 @@ ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
 
-FROM base AS builder
+FROM base AS prod
 
 COPY pnpm-lock.yaml /app
 WORKDIR /app
@@ -13,13 +13,8 @@ RUN pnpm fetch --prod
 COPY . /app
 RUN pnpm run build
 
-FROM base AS prod
-
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
-
+FROM base
+COPY --from=prod /app/node_modules /app/node_modules
+COPY --from=prod /app/dist /app/dist
 EXPOSE 3000
-ENV PORT=3000
-ENV HOSTNAME="0.0.0.0"
-CMD ["node", "server.js"]
+CMD [ "pnpm", "start" ]
