@@ -1,4 +1,4 @@
-FROM node:20-slim as base
+FROM node:23 as base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
@@ -13,7 +13,7 @@ FROM base as build
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 RUN pnpm run build
 
-FROM node:20-slim
+FROM node:23-slim
 
 COPY --from=build /app/public ./public
 COPY --from=build /app/.next/standalone ./
